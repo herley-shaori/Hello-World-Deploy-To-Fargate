@@ -1,4 +1,4 @@
-version: 0.2
+version: 0.3
 phases:
   pre_build:
     commands:
@@ -24,9 +24,9 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"nama-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - cat imagedefinitions.json
+      - printf '[{"name":"nama-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageexplanations.json
+      - cat imageexplanations.json
 artifacts:
   files:
-    - imagedefinitions.json
+    - imageexplanations.json
     - target/SimpleHello-0.0.1-SNAPSHOT.jar
