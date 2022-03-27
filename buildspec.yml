@@ -3,7 +3,7 @@ phases:
   pre_build:
     commands:
       - mvn clean install
-      - echo Logging in to Amazon ECR...
+      - echo Mencoba login ke AWS ECR...
       - aws --version
       - AWS_DEFAULT_REGION=ap-southeast-1
       - AWS_ACCOUNT_ID=071637725087
@@ -13,13 +13,13 @@ phases:
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build dimulai pada `date`
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Build selesai `date`
       - echo Pushing the Docker images...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
@@ -30,16 +30,3 @@ artifacts:
   files:
     - imagedefinitions.json
     - target/SimpleHello-0.0.1-SNAPSHOT.jar
-#version: 0.2
-#phases:
-#  build:
-#    commands:
-#      - echo Entered the build phase...
-#      - mvn clean install
-#  post_build:
-#    commands:
-#      - echo Build completed successfully
-#artifacts:
-#  files:
-#    - target/SimpleHello-0.0.1-SNAPSHOT.jar
-#  discard-paths: yes
