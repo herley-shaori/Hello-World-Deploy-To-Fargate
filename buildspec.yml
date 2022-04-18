@@ -15,6 +15,7 @@ phases:
     commands:
       - echo Build dimulai pada `date`
       - echo Building the Docker image...
+      - docker login -u=herley17 -p=7-fC%fz~**Ym_i
       - docker build -t herley-springboot-test .
   post_build:
     commands:
