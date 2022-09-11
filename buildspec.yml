@@ -22,8 +22,10 @@ phases:
     commands:
       - echo Build selesai `date`
       - echo Pushing the Docker images...
-      - docker tag herley-springboot-test:latest 623127157773.dkr.ecr.ap-southeast-1.amazonaws.com/herley-springboot-test:latest
-      - docker push 623127157773.dkr.ecr.ap-southeast-1.amazonaws.com/herley-springboot-test:latest
+      - docker tag herley-springboot-test:latest $REPOSITORY_URI
+      - docker push $REPOSITORY_URI
+#      - docker tag herley-springboot-test:latest 623127157773.dkr.ecr.ap-southeast-1.amazonaws.com/herley-springboot-test:latest
+#      - docker push 623127157773.dkr.ecr.ap-southeast-1.amazonaws.com/herley-springboot-test:latest
       - echo Writing image definitions file...
       - printf '[{"name":"hello-container","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageexplanations.json
       - cat imageexplanations.json
