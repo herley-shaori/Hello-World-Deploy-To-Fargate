@@ -17,12 +17,12 @@ phases:
     commands:
       - echo Build dimulai pada `date`
       - echo Building the Docker image...
-      - docker build -t herley-springboot-test .
+      - docker build -t $REPOSITORY_NAME .
   post_build:
     commands:
       - echo Build selesai `date`
       - echo Pushing the Docker images...
-      - docker tag herley-springboot-test:latest $REPOSITORY_URI
+      - docker tag $REPOSITORY_NAME:$REPOSITORY_TAG $REPOSITORY_URI
       - docker push $REPOSITORY_URI
 #      - docker tag herley-springboot-test:latest 623127157773.dkr.ecr.ap-southeast-1.amazonaws.com/herley-springboot-test:latest
 #      - docker push 623127157773.dkr.ecr.ap-southeast-1.amazonaws.com/herley-springboot-test:latest
