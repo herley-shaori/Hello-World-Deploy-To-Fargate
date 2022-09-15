@@ -1,1 +1,1 @@
-Kode program untuk Tutorial Java Springboot dengan AWS CodeCommit, CodeBuild dan Deploy ke AWS Fargate.
+Kode program untuk Tutorial Java Springboot dengan AWS CodeCommit, CodeBuild dan Deploy ke AWS Fargate. Artikel dapat Anda baca di https://herley-shaori.medium.com/pengembangan-java-springboot-menggunakan-aws-codepipeline-dan-aws-fargate-e5f6518fec43.
