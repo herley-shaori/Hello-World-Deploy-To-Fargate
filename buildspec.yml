@@ -4,9 +4,10 @@ phases:
     commands:
       - echo Mencoba login ke AWS ECR...
       - aws --version
-      - AWS_DEFAULT_REGION=ap-southeast-1
-      - AWS_ACCOUNT_ID=623127157773
-      - REPOSITORY_NAME=simple-hello-world-demo
+      - AWS_DEFAULT_REGION=<KODE_REGION_ANDA>
+      - AWS_ACCOUNT_ID=<ACCOUNT_ID_ANDA>
+      - REPOSITORY_NAME=<NAMA_REPOSITORI_ECR>
+      - CONTAINER_NAME_AT_SERVICE=<NAMA_KONTAINER_PADA_SERVICE>
       - REPOSITORY_TAG=latest
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 #      - mvn clean install
@@ -27,7 +28,7 @@ phases:
       - docker tag $REPOSITORY_NAME:$REPOSITORY_TAG $REPOSITORY_URI
       - docker push $REPOSITORY_URI
       - echo Writing image definitions file...
-      - printf '[{"name":"simple-hello-world-container","imageUri":"%s"}]' $REPOSITORY_URI_UNTAG:$LATEST_IMAGE_TAG > imageexplanations.json
+      - printf '[{"name":$CONTAINER_NAME_AT_SERVICE,"imageUri":"%s"}]' $REPOSITORY_URI_UNTAG:$LATEST_IMAGE_TAG > imageexplanations.json
       - cat imageexplanations.json
 artifacts:
   files:
