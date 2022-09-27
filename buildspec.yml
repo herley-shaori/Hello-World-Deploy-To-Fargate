@@ -4,9 +4,9 @@ phases:
     commands:
       - echo Mencoba login ke AWS ECR...
       - aws --version
-      - AWS_DEFAULT_REGION=ap-southeast-1
-      - AWS_ACCOUNT_ID=623127157773
-      - REPOSITORY_NAME=demo-springboot-to-fargate-ecr
+      - AWS_DEFAULT_REGION=<REGION-ANDA>
+      - AWS_ACCOUNT_ID=<AWS-ACCOUNT-ID-ANDA>
+      - REPOSITORY_NAME=<NAMA-REPOSITORI-ECR-ANDA>
       - REPOSITORY_TAG=latest
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
